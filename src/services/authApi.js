@@ -184,7 +184,7 @@ export async function registerUser({ fullName, email, password, role = "donor", 
 
   if (role === "donor") {
     const { error: donorError } = await supabase.from("donors").insert({
-      profile_id: userId, blood_group: extra.bloodGroup || "O+", location: extra.location || city, availability: extra.availability ?? true, last_donation_date: extra.lastDonationDate || null, medical_notes: extra.medicalNotes || null,
+      profile_id: userId, blood_group: extra.blood_group || "O+", location: extra.location || city, availability: extra.availability ?? true, last_donation_date: extra.lastDonationDate || null, medical_notes: extra.medicalNotes || null,
     })
     if (donorError) throw new Error(donorError.message)
   }

@@ -1,0 +1,55 @@
+# Database Schema Diagram (Textual)
+
+Profiles
+├─ id (PK)
+├─ full_name
+├─ email
+├─ phone
+├─ role
+├─ city
+├─ created_at
+└─ relationships:
+    ├─ donors (1..*)
+    ├─ blood_requests (1..*)
+    └─ hospital_verified (1)
+
+Donors
+├─ id (PK)
+├─ profile_id (FK profiles)
+├─ blood_group
+├─ location
+├─ phone
+├─ availability
+├─ consent_phone
+├─ last_donation_date
+├─ created_at
+└─ relationships:
+    └─ donations (1..*)
+
+Blood Requests
+├─ id (PK)
+├─ profile_id (FK profiles)
+├─ patient_name
+├─ required_blood_group
+├─ units_required
+├─ hospital_name
+├─ status
+├─ emergency_notes
+├─ created_at
+└─ relationships:
+    └─ hospital_verified (hospital_name)
+
+Hospital Verified
+├─ id (PK)
+├─ profile_id (FK profiles)
+├─ hospital_name
+├─ city
+├─ license_number
+├─ created_at
+
+Donations
+├─ id (PK)
+├─ donor_id (FK donors)
+├─ blood_group
+├─ hospital_name
+├─ donation_date
