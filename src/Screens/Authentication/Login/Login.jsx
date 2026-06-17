@@ -5,8 +5,12 @@ import { ArrowRight, LockKeyhole, Mail } from "lucide-react"
 import React from "react"
 import { useForm } from "react-hook-form"
 import { Link, useNavigate, useSearchParams } from "react-router-dom"
+import { useQueryClient } from "@tanstack/react-query"
+import { AUTH_USER_QUERY_KEY } from "@/Components/hooks/useAuthUser"
+
 
 const LoginPage = () => {
+  const queryClient = useQueryClient()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const redirect = searchParams.get("redirect")
@@ -17,9 +21,20 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     try {
       const authData = await loginUser(data)
-      navigate(redirect || getDashboardPath(authData.profile), { replace: true })
+
+      queryClient.setQueryData(
+        AUTH_USER_QUERY_KEY,
+        authData
+      )
+
+      navigate(
+        redirect || getDashboardPath(authData.profile),
+        { replace: true }
+      )
     } catch (error) {
-      setError("root", { message: error?.message || "Unable to sign in." })
+      setError("root", {
+        message: error?.message || "Unable to sign in.",
+      })
     }
   }
 

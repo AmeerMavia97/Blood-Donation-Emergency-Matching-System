@@ -7,7 +7,12 @@ const ProtectedRoute = ({ children, roles = [] }) => {
   const { data, isLoading } = useAuthUser()
   const user = data?.user
   const profile = data?.profile
-
+console.log("ProtectedRoute", {
+  isLoading,
+  user,
+  profile,
+  pathname: location.pathname,
+})
   if (isLoading) {
     return <div className="flex min-h-screen items-center justify-center bg-[#f4f4f4] font-head text-xl font-black text-[#151515]">Loading...</div>
   }
