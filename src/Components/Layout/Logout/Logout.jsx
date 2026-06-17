@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom"
 import { LogOut } from "lucide-react"
 
 import { useQueryClient } from "@tanstack/react-query"
-import ConfirmationModal from "@/components/Modal/ConfirmationModal"
+import ConfirmationModal from "@/Components/Modal/ConfirmationModal"
 import { logoutUser } from "@/services/authApi"
-import { AUTH_USER_QUERY_KEY } from "@/components/hooks/useAuthUser"
+import { AUTH_USER_QUERY_KEY } from "@/Components/hooks/useAuthUser"
 
 const Logout = ({
     className = "",

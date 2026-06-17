@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
 
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
+import { Label } from "@/Components/ui/label"
+import { Input } from "@/Components/ui/input"
 
 const FormField = ({ error, id, label, registration, ...inputProps }) => {
   const [showPassword, setShowPassword] = useState(false)

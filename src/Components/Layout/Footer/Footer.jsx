@@ -1,5 +1,5 @@
 import { Droplets } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -7,10 +7,21 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl rounded-[2rem] border border-white/70 bg-white/65 p-8 shadow-2xl shadow-neutral-950/10 backdrop-blur-xl md:p-10">
         <div className="grid gap-10 md:grid-cols-[1.3fr_0.7fr_0.7fr_0.7fr]">
           <div>
-            <Link to="/" className="flex items-center gap-3">
-              <span className="flex size-11 items-center justify-center rounded-full bg-red-600 text-white"><Droplets size={22}/></span>
-              <span className="font-head text-2xl font-black uppercase">BloodBridge</span>
-            </Link>
+            <NavLink to="/" className="flex items-center gap-3">
+            <span className="flex size-9 items-center justify-center">
+              {/* <Droplet size={25} /> */}
+              <img src={'/BloodLogo.png'} alt="" />
+            </span>
+
+            <div className="hidden sm:block leading-none">
+              <h4 className="font-head text-xl font-black uppercase tracking-tight text-[#151515]">
+                BloodBridge
+              </h4>
+              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#dc2626]">
+                Donate Blood
+              </p>
+            </div>
+          </NavLink>
             <p className="mt-5 max-w-md font-para text-sm leading-7 text-neutral-600">Emergency blood matching platform for verified requests, eligible donors, consent-based contact sharing and fulfillment tracking.</p>
           </div>
           <FooterLinks title="Quick Links" items={['Home','Donate','Requests','Hospitals']} />
